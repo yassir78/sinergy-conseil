@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SINERGY CONSEIL est un bureau d'études pluridisciplinaire spécialisé en ingénierie du bâtiment, performance énergétique, AMO et digitalisation. Europe & Afrique.">
+<title>SINERGY CONSEIL | Bureau d'Études Techniques & Ingénierie Durable</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #2E7D8E;
+  --green-dark: #1A5F6E;
+  --green-dim: rgba(46,125,142,0.08);
+  --green-glow: rgba(46,125,142,0.2);
+  --bg: #FFFFFF;
+  --bg2: #F4F8FA;
+  --bg3: #EDF2F7;
+  --surface: #EAF2F5;
+  --border: rgba(46,125,142,0.18);
+  --border-light: rgba(30,45,74,0.08);
+  --text: #2C3E55;
+  --text-dim: rgba(44,62,85,0.65);
+  --text-muted: rgba(44,62,85,0.38);
+  --heading: #1E2D4A;
+  --accent: #A8D8E2;
+  --mono: 'JetBrains Mono', monospace;
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'Outfit', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════ */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+
+/* ═══════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 3rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+nav.scrolled {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom-color: var(--border);
+  box-shadow: 0 2px 24px rgba(30,45,74,0.08);
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-decoration: none;
+}
+
+.nav-logo-main {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  line-height: 1;
+  transition: color 0.4s;
+}
+nav.scrolled .nav-logo-main { color: var(--heading); }
+
+.nav-logo-sub {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  line-height: 1;
+  transition: color 0.4s;
+}
+nav.scrolled .nav-logo-sub { color: var(--green); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+nav.scrolled .nav-links a { color: var(--text-dim); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--green);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+nav.scrolled .nav-links a:hover { color: var(--green); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: transparent !important;
+  color: var(--green) !important;
+  border: 1px solid var(--green) !important;
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.12em !important;
+  transition: all 0.3s !important;
+}
+
+.nav-cta:hover {
+  background: var(--green) !important;
+  color: #fff !important;
+}
+
+  .nav-cta:hover {
+    background: var(--green) !important;
+    color: #fff !important;
+  }
+
+  .nav-cta::after { display: none !important; }
+
+  .nav-lang {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+  }
+  nav.scrolled .nav-lang { color: var(--text-muted); }
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(150deg, #1E2D4A 0%, #243659 55%, #1A3A4A 100%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(46,125,142,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,125,142,0.12) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+  animation: grid-pulse 8s ease-in-out infinite;
+}
+
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+.hero-orb {
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(46,125,142,0.25) 0%, transparent 70%);
+  top: 50%; left: 60%;
+  transform: translate(-50%, -60%);
+  animation: orb-float 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes orb-float {
+  0%, 100% { transform: translate(-50%, -60%) scale(1); }
+  50% { transform: translate(-48%, -62%) scale(1.05); }
+}
+
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: fade-up 0.8s 0.3s forwards;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--accent);
+}
+
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.hero-h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  max-width: 540px;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: #FFFFFF;
+  padding: 0.9rem 2.2rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(46,125,142,0.35);
+}
+
+.btn-ghost {
+  color: rgba(255,255,255,0.7);
+  padding: 0.9rem 2.2rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem; right: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fade-up 0.8s 1.2s forwards;
+}
+
+.hero-scroll span {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.35);
+  writing-mode: vertical-rl;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scroll-anim 2s ease-in-out infinite;
+}
+
+@keyframes scroll-anim {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-stat-num {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+
+/* fade-up global */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-h1 { opacity: 0; animation: fade-up 1s 0.5s forwards; }
+.hero-sub { opacity: 0; animation: fade-up 0.8s 0.7s forwards; }
+.hero-actions { opacity: 0; animation: fade-up 0.8s 0.9s forwards; }
+.hero-stats { opacity: 0; animation: fade-up 0.8s 1.1s forwards; }
+
+/* ═══════════════════════════════════════
+   SECTION UTILITIES
+═══════════════════════════════════════ */
+section {
+  padding: 7rem 3rem;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-tag::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--green);
+}
+
+.section-h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--heading);
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+
+.section-h2 em { font-style: italic; color: var(--green); }
+
+.section-lead {
+  font-size: 1rem;
+  color: var(--text-dim);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: 4rem;
+}
+
+/* reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════
+   ABOUT / IDENTITÉ
+═══════════════════════════════════════ */
+#about {
+  background: var(--bg2);
+  position: relative;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+}
+
+.about-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  padding: 3rem;
+  position: relative;
+  box-shadow: 0 8px 40px rgba(30,45,74,0.08);
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 60px; height: 3px;
+  background: var(--green);
+}
+
+.about-quote {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--heading);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.about-quote em { color: var(--green); font-style: normal; font-weight: 600; }
+
+.about-meta {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.about-floating {
+  position: absolute;
+  bottom: -2rem; right: -2rem;
+  background: var(--heading);
+  color: #FFFFFF;
+  padding: 1.5rem 2rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: 200px;
+}
+
+.about-floating strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.about-values {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.value-item {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  padding: 1.2rem;
+  border: 1px solid var(--border-light);
+  transition: border-color 0.3s, background 0.3s;
+  background: #FFFFFF;
+}
+
+.value-item:hover {
+  border-color: var(--border);
+  background: var(--bg2);
+  box-shadow: 0 4px 16px rgba(30,45,74,0.06);
+}
+
+.value-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--green);
+  letter-spacing: 0.1em;
+  padding-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.value-content h4 {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--heading);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+
+.value-content p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   AXES STRATÉGIQUES
+═══════════════════════════════════════ */
+#axes {
+  background: var(--bg);
+}
+
+.axes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  margin-top: 1rem;
+  background: #FFFFFF;
+  box-shadow: 0 4px 32px rgba(30,45,74,0.06);
+}
+
+.axe-item {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+}
+
+.axe-item:last-child { border-right: none; }
+
+.axe-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+
+.axe-item:hover::after { transform: scaleX(1); }
+.axe-item:hover { background: var(--bg2); }
+
+.axe-number {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.axe-icon {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.axe-title {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.axe-text {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════
+   EXPERTISE HUBS
+═══════════════════════════════════════ */
+#expertises {
+  background: var(--bg3);
+  position: relative;
+}
+
+.hub-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.hub-tab {
+  padding: 1.2rem 2rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+
+.hub-tab:hover { color: var(--text); }
+.hub-tab.active { color: var(--green); border-bottom-color: var(--green); }
+
+.hub-panels {
+  margin-top: 0;
+}
+
+.hub-panel {
+  display: none;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+  padding: 4rem 0 0;
+}
+
+.hub-panel.active { display: grid; }
+
+.hub-info h3 {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--heading);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.hub-info h3 em { font-style: italic; color: var(--green); }
+
+.hub-info p {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.hub-value {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 1.2rem 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.hub-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: #FFFFFF;
+  box-shadow: 0 4px 24px rgba(30,45,74,0.06);
+}
+
+.hub-item {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1.3rem 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+  align-items: flex-start;
+  transition: background 0.3s;
+}
+
+.hub-item:last-child { border-bottom: none; }
+.hub-item:hover { background: var(--bg2); }
+
+.hub-item-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-top: 0.6rem;
+  flex-shrink: 0;
+}
+
+.hub-item span {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.hub-item strong {
+  color: var(--heading);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════
+   MÉTHODOLOGIE
+═══════════════════════════════════════ */
+#methodologie {
+  background: var(--bg2);
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.method-sticky {
+  position: sticky;
+  top: 120px;
+}
+
+.method-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.method-step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0;
+  position: relative;
+}
+
+.method-step-num {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.method-num-circle {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.method-step:hover .method-num-circle,
+.method-step.active .method-num-circle {
+  border-color: var(--green);
+  background: var(--green);
+  color: #FFFFFF;
+}
+
+.method-line {
+  width: 1px;
+  flex: 1;
+  background: var(--border-light);
+  margin: 0 auto;
+  min-height: 3rem;
+}
+
+.method-step:last-child .method-line { display: none; }
+
+.method-content {
+  padding: 0.2rem 0 3rem 1.5rem;
+}
+
+.method-title {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.method-step:hover .method-title,
+.method-step.active .method-title { color: var(--green); }
+
+.method-body {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.method-step.active .method-body { max-height: 300px; }
+
+.method-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.method-tag {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--green);
+  background: var(--green-dim);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════
+   SECTEURS
+═══════════════════════════════════════ */
+#secteurs {
+  background: var(--bg);
+}
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 1rem;
+  box-shadow: 0 4px 32px rgba(30,45,74,0.06);
+}
+
+.sector-card { background: #FFFFFF; padding: 2.5rem 2rem; transition: background 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+.sector-card:hover { background: var(--bg2); box-shadow: 0 4px 20px rgba(30,45,74,0.07); }
+
+.sector-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 0;
+  background: var(--green);
+  transition: height 0.4s;
+}
+
+.sector-card:hover::before { height: 100%; }
+
+.sector-icon {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.sector-title {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--heading);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.sector-text {
+  font-size: 0.83rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.sector-missions {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sector-mission {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.sector-mission::before {
+  content: '→ ';
+  color: var(--green);
+}
+
+/* ═══════════════════════════════════════
+   CERTIFICATIONS
+═══════════════════════════════════════ */
+#certifications {
+  background: var(--bg3);
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 4rem;
+  box-shadow: 0 4px 32px rgba(30,45,74,0.06);
+}
+
+.cert-item {
+  background: #FFFFFF;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.cert-item:hover { background: var(--bg2); box-shadow: 0 4px 20px rgba(30,45,74,0.07); }
+
+.cert-badge {
+  font-family: var(--sans);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.cert-name {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.cert-desc {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   RÉFÉRENCES CLIENTS
+═══════════════════════════════════════ */
+#references {
+  background: var(--bg2);
+}
+
+.ref-marquee-wrap {
+  overflow: hidden;
+  margin: 3rem 0;
+  position: relative;
+}
+
+.ref-marquee-wrap::before,
+.ref-marquee-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 100px;
+  z-index: 2;
+}
+
+.ref-marquee-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg2), transparent);
+}
+
+.ref-marquee-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg2), transparent);
+}
+
+.ref-marquee {
+  display: flex;
+  gap: 0;
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+
+.ref-marquee:hover { animation-play-state: paused; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ref-item {
+  padding: 1.5rem 3rem;
+  border-right: 1px solid var(--border-light);
+  white-space: nowrap;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+
+.ref-item:hover { color: var(--green); }
+
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 32px rgba(30,45,74,0.06);
+}
+
+.ref-logo-item {
+  background: #FFFFFF;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.ref-logo-item:hover { background: var(--bg3); box-shadow: inset 0 0 0 1px var(--border); }
+
+.ref-logo-text {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--heading);
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.ref-logo-item:hover .ref-logo-text { opacity: 1; }
+
+/* ═══════════════════════════════════════
+   CTA BAND
+═══════════════════════════════════════ */
+#cta-band {
+  background: var(--heading);
+  padding: 6rem 3rem;
+}
+
+.cta-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+}
+
+.cta-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  color: #FFFFFF;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.cta-text p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+
+.btn-dark {
+  background: var(--green);
+  color: #FFFFFF;
+  padding: 1.1rem 2.8rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.btn-dark:hover {
+  background: var(--accent);
+  color: var(--heading);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+/* ═══════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════ */
+#contact {
+  background: var(--bg);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 6rem;
+}
+
+.contact-info h3 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--heading);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.contact-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  font-size: 1rem;
+  color: var(--green);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.contact-detail-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.contact-detail-value {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.contact-detail-value a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-detail-value a:hover { color: var(--green); }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background: #FFFFFF;
+  border: 1px solid rgba(30,45,74,0.15);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 0.9rem 1.2rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(46,125,142,0.12);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%232E7D8E' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.form-select option { background: #FFFFFF; color: var(--text); }
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  background: var(--green);
+  color: #FFFFFF;
+  padding: 1rem 2.5rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: flex-start;
+}
+
+.form-submit:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(46,125,142,0.3);
+}
+
+.form-note {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  background: var(--heading);
+  border-top: none;
+  padding: 4rem 3rem 2rem;
+}
+
+.footer-brand-name {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  margin-bottom: 0.3rem;
+}
+
+.footer-brand-sub {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.footer-brand-desc {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+}
+
+.footer-col h5 {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer-links a {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.3s;
+  letter-spacing: 0.02em;
+}
+
+.footer-links a:hover { color: var(--accent); }
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 2rem;
+}
+
+.footer-brand-name {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  color: var(--heading);
+  margin-bottom: 0.3rem;
+}
+
+.footer-brand-sub {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.footer-brand-desc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.footer-col h5 {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer-links a {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+  letter-spacing: 0.02em;
+}
+
+.footer-links a:hover { color: var(--green); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 2rem;
+}
+
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-legal a {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+
+.footer-legal a:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════
+   LANG SWITCHER
+═══════════════════════════════════════ */
+.lang-switcher {
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: border-color 0.4s;
+}
+nav.scrolled .lang-switcher { border-color: var(--border); }
+
+.lang-btn {
+  background: none;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+nav.scrolled .lang-btn { color: var(--text-muted); }
+
+.lang-btn.active,
+.lang-btn:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--heading);
+  transition: all 0.3s;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .axes-grid { grid-template-columns: 1fr; }
+  .axe-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .hub-panel { grid-template-columns: 1fr; gap: 2rem; }
+  .method-grid { grid-template-columns: 1fr; }
+  .method-sticky { position: static; }
+  .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+  .cert-grid { grid-template-columns: repeat(2, 1fr); }
+  .ref-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .cta-inner { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 4rem 1.5rem; }
+  nav { padding: 0 1.5rem; }
+  #hero { padding: 0 1.5rem 3rem; }
+
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: rgba(255,255,255,0.98);
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(30,45,74,0.1);
+  }
+
+  .hamburger { display: flex; }
+
+  .sectors-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr 1fr; }
+  .ref-grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .hub-tabs { gap: 0; }
+  .hub-tab { padding: 0.8rem 1rem; font-size: 0.6rem; }
+  .about-floating { position: static; margin-top: 1rem; width: auto; }
+}
+
+/* ═══════════════════════════════════════
+   IMAGE ENHANCEMENTS
+═══════════════════════════════════════ */
+.about-img-wrap img { transition: transform 0.6s ease; }
+.about-img-wrap:hover img { transform: scale(1.03); }
+
+.axe-item div img {
+  transition: transform 0.6s ease;
+}
+.axe-item:hover div img { transform: scale(1.05); }
+
+/* Gallery strip responsive */
+@media (max-width: 768px) {
+  .gallery-strip-inner { grid-template-columns: repeat(2,1fr) !important; height:340px !important; }
+}
+@media (max-width: 480px) {
+  .gallery-strip-inner { grid-template-columns: 1fr !important; height:auto !important; }
+}
+
+/* Cert hero image */
+.cert-hero-img img { transition: transform 0.6s ease; }
+.cert-hero-img:hover img { transform: scale(1.02); }
+
+/* hub image zoom */
+.hub-info div img { transition: transform 0.5s ease; }
+
+/* image band parallax feel */
+#references + section, section + .image-band { margin: 0; }
+
+/* ═══════════════════════════════════════
+   UTILITY
+═══════════════════════════════════════ */
+nav::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--heading), var(--green), var(--accent));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+nav.scrolled::before { opacity: 1; }
+
+#about { background: var(--bg2); }
+#axes  { background: var(--bg); }
+#expertises { background: var(--bg2); }
+#methodologie { background: var(--bg); }
+#secteurs { background: var(--bg2); }
+#certifications { background: var(--bg); }
+#references { background: var(--bg2); }
+#contact { background: var(--bg); }
+
+.axe-item { background: #FFFFFF; }
+
+.hub-tab {
+  background: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+}
+.hub-tab:hover { color: var(--text); background: var(--bg3); }
+.hub-tab.active { color: var(--green); border-bottom-color: var(--green); background: none; }
+
+.method-num-circle {
+  background: #FFFFFF;
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+.about-quote em { color: var(--green); font-style: italic; }
+
+/* scrollbar update */
+::-webkit-scrollbar-track { background: var(--bg2); }
+
+/* form success */
+#form-success {
+  border-color: var(--green) !important;
+  color: var(--green-dark) !important;
+  background: var(--green-dim) !important;
+}
+.text-green { color: var(--green); }
+.mb-sm { margin-bottom: 0.5rem; }
+
+/* separating line decoration */
+.line-deco {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.line-deco::before,
+.line-deco::after {
+  content: '';
+  height: 1px;
+  background: var(--border);
+  flex: 1;
+}
+
+.line-deco span {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-main">SINERGY CONSEIL</span>
+    <span class="nav-logo-sub">Bureau d'Études Techniques</span>
+  </a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">À Propos</a></li>
+    <li><a href="#expertises">Expertises</a></li>
+    <li><a href="#methodologie">Méthode</a></li>
+    <li><a href="#secteurs">Secteurs</a></li>
+    <li><a href="#references">Références</a></li>
+    <li><a href="#contact" class="nav-cta">Nous Contacter</a></li>
+    <li>
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+    </li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section id="hero">
+  <div class="hero-bg-img" style="position:absolute;inset:0;z-index:0;overflow:hidden;">
+    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=85&fit=crop" alt="Bâtiment durable" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.18;transform:scale(1.03);">
+  </div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+
+  <div class="container" style="position:relative;z-index:1;">
+    <p class="hero-tag" data-fr="Expert en ingénierie — Europe & Afrique" data-en="Engineering Experts — Europe & Africa">Expert en ingénierie — Europe & Afrique</p>
+
+    <h1 class="hero-h1">
+      <span data-fr="L'ingénierie technique<br>et <em>durable</em><br>au service de vos projets." data-en="Technical and <em>sustainable</em><br>engineering in service<br>of your projects.">L'ingénierie technique<br>et <em>durable</em><br>au service de vos projets.</span>
+    </h1>
+
+    <p class="hero-sub" data-fr="Bureau d'études pluridisciplinaire spécialisé dans l'ingénierie du bâtiment, la performance énergétique, l'AMO et la digitalisation. Nous accompagnons maîtres d'ouvrage publics et privés en Europe et en Afrique." data-en="A multidisciplinary engineering firm specializing in building engineering, energy performance, project management, and digital innovation. Supporting public and private clients across Europe and Africa.">Bureau d'études pluridisciplinaire spécialisé dans l'ingénierie du bâtiment, la performance énergétique, l'AMO et la digitalisation. Nous accompagnons maîtres d'ouvrage publics et privés en Europe et en Afrique.</p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary" data-fr="Discuter de votre projet" data-en="Discuss Your Project">Discuter de votre projet</a>
+      <a href="#expertises" class="btn-ghost" data-fr="Découvrir nos expertises" data-en="Explore Our Expertise">Découvrir nos expertises</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label" data-fr="Pôles d'expertise intégrés" data-en="Integrated Expertise Hubs">Pôles d'expertise intégrés</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-label" data-fr="Continents — Europe & Afrique" data-en="Continents — Europe & Africa">Continents — Europe & Afrique</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">HQE · BREEAM · WELL · ISO</div>
+        <div class="hero-stat-label" data-fr="Certifications maîtrisées" data-en="Certifications Mastered">Certifications maîtrisées</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img-wrap" style="position:relative;">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=85&fit=crop" alt="Ingénieurs en études techniques" style="width:100%;height:420px;object-fit:cover;object-position:center;display:block;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(30,45,74,0.7) 0%, transparent 55%);"></div>
+          <div style="position:absolute;bottom:2rem;left:2rem;right:2rem;">
+            <p class="about-quote" style="color:#fff;margin-bottom:0.8rem;font-size:1.25rem;" data-fr="Nous ne concevons pas de simples structures. Nous <em>ingénions des environnements</em> performants, durables et centrés sur l'humain." data-en="We do not just engineer structures. We <em>design environments</em> that are high-performing, sustainable, and human-centric.">Nous ne concevons pas de simples structures. Nous <em>ingénions des environnements</em> performants, durables et centrés sur l'humain.</p>
+            <p class="about-meta" style="color:rgba(255,255,255,0.55);" data-fr="SINERGY CONSEIL — Positionnement" data-en="SINERGY CONSEIL — Positioning Statement">SINERGY CONSEIL — Positionnement</p>
+          </div>
+        </div>
+        <div class="about-floating">
+          <strong>360°</strong>
+          <span data-fr="Vision intégrée du projet" data-en="Integrated project vision">Vision intégrée du projet</span>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.15s">
+        <p class="section-tag" data-fr="Qui sommes-nous" data-en="Who We Are">Qui sommes-nous</p>
+        <h2 class="section-h2" data-fr="Bureau d'études techniques<br>& d'<em>ingénierie durable</em>" data-en="Technical engineering firm<br>& <em>sustainable consultancy</em>">Bureau d'études techniques<br>& d'<em>ingénierie durable</em></h2>
+        <p class="section-lead" data-fr="SINERGY CONSEIL est un bureau d'études pluridisciplinaire spécialisé dans l'ingénierie du bâtiment, des infrastructures, de l'énergie et de l'environnement. Nous intervenons sur l'ensemble du cycle de vie des projets avec un objectif constant : qualité, durabilité et maîtrise des coûts." data-en="SINERGY CONSEIL is a multidisciplinary engineering firm specializing in building, infrastructure, energy, and environmental engineering. We operate across the full project lifecycle with a constant objective: quality, sustainability, and cost control.">SINERGY CONSEIL est un bureau d'études pluridisciplinaire spécialisé dans l'ingénierie du bâtiment, des infrastructures, de l'énergie et de l'environnement. Nous intervenons sur l'ensemble du cycle de vie des projets avec un objectif constant : qualité, durabilité et maîtrise des coûts.</p>
+
+        <div class="about-values">
+          <div class="value-item">
+            <span class="value-num">01</span>
+            <div class="value-content">
+              <h4 data-fr="Durabilité & Innovation" data-en="Sustainability & Innovation">Durabilité & Innovation</h4>
+              <p data-fr="Des approches pensées pour réduire l'impact environnemental et accompagner la transition écologique." data-en="Methodologies designed to reduce environmental impact and drive the ecological transition.">Des approches pensées pour réduire l'impact environnemental et accompagner la transition écologique.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-num">02</span>
+            <div class="value-content">
+              <h4 data-fr="Excellence Technique" data-en="Technical Excellence">Excellence Technique</h4>
+              <p data-fr="Une maîtrise solide des normes et des enjeux actuels de l'ingénierie du bâtiment." data-en="A deep, robust mastery of modern engineering standards and current technical challenges.">Une maîtrise solide des normes et des enjeux actuels de l'ingénierie du bâtiment.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-num">03</span>
+            <div class="value-content">
+              <h4 data-fr="Confiance & Engagement" data-en="Trust & Engagement">Confiance & Engagement</h4>
+              <p data-fr="Des partenariats fondés sur la transparence, la rigueur et la recherche du résultat." data-en="Partnerships founded on transparency, rigor, and an unwavering focus on results.">Des partenariats fondés sur la transparence, la rigueur et la recherche du résultat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ AXES STRATÉGIQUES ═══════════════════ -->
+<section id="axes">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag" data-fr="Nos axes stratégiques" data-en="Our Strategic Pillars">Nos axes stratégiques</p>
+      <h2 class="section-h2" data-fr="Trois convictions qui guident<br>chacune de nos <em>interventions</em>" data-en="Three convictions that guide<br>each of our <em>engagements</em>">Trois convictions qui guident<br>chacune de nos <em>interventions</em></h2>
+    </div>
+    <div class="axes-grid reveal" style="transition-delay:0.1s">
+      <div class="axe-item">
+        <span class="axe-number">AXE 01</span>
+        <div style="width:100%;height:160px;overflow:hidden;margin-bottom:1.5rem;"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=500&q=75&fit=crop" alt="Transition environnementale" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <span class="axe-icon" style="display:none;">🌍</span>
+        <h3 class="axe-title" data-fr="Transition Environnementale & Adaptation Climatique" data-en="Environmental Transition & Climate Adaptation">Transition Environnementale & Adaptation Climatique</h3>
+        <p class="axe-text" data-fr="Réduction de l'empreinte carbone, optimisation énergétique, intégration des énergies renouvelables et conception durable. Nous aidons nos clients à anticiper les contraintes climatiques et à en faire un avantage compétitif." data-en="Carbon footprint reduction, energy optimization, renewable energy integration, and sustainable design. We help our clients anticipate climate constraints and turn them into competitive advantages.">Réduction de l'empreinte carbone, optimisation énergétique, intégration des énergies renouvelables et conception durable. Nous aidons nos clients à anticiper les contraintes climatiques et à en faire un avantage compétitif.</p>
+      </div>
+      <div class="axe-item">
+        <span class="axe-number">AXE 02</span>
+        <div style="width:100%;height:160px;overflow:hidden;margin-bottom:1.5rem;"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=500&q=75&fit=crop" alt="Bien-être environnements de travail" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <span class="axe-icon" style="display:none;">🧠</span>
+        <h3 class="axe-title" data-fr="Santé, Bien-être & Qualité des Environnements" data-en="Health, Well-being & Workspace Quality">Santé, Bien-être & Qualité des Environnements</h3>
+        <p class="axe-text" data-fr="Conception centrée sur l'humain : confort thermique, acoustique et visuel, qualité de l'air intérieur. Nous visons les certifications WELL, HQE et ISO pour garantir des environnements de travail performants et sains." data-en="Human-centric design: thermal, acoustic, and visual comfort, indoor air quality. We target WELL, HQE, and ISO certifications to guarantee healthy, high-performance environments.">Conception centrée sur l'humain : confort thermique, acoustique et visuel, qualité de l'air intérieur. Nous visons les certifications WELL, HQE et ISO pour garantir des environnements de travail performants et sains.</p>
+      </div>
+      <div class="axe-item">
+        <span class="axe-number">AXE 03</span>
+        <div style="width:100%;height:160px;overflow:hidden;margin-bottom:1.5rem;"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=75&fit=crop" alt="Transformation digitale" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <span class="axe-icon" style="display:none;">⚡</span>
+        <h3 class="axe-title" data-fr="Transformation Digitale & Nouveaux Usages" data-en="Digital Transformation & New Usages">Transformation Digitale & Nouveaux Usages</h3>
+        <p class="axe-text" data-fr="Innovation numérique au service de la conception, de la performance et de la gestion des actifs immobiliers. BIM, jumeaux numériques, IoT, supervision énergétique en temps réel." data-en="Digital innovation driving asset design, performance monitoring, and property management. BIM, digital twins, IoT, real-time energy supervision.">Innovation numérique au service de la conception, de la performance et de la gestion des actifs immobiliers. BIM, jumeaux numériques, IoT, supervision énergétique en temps réel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ EXPERTISES ═══════════════════ -->
+<section id="expertises">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag" data-fr="Nos pôles d'expertise" data-en="Our Expertise Hubs">Nos pôles d'expertise</p>
+      <h2 class="section-h2" data-fr="Quatre disciplines intégrées.<br>Une vision <em>systémique</em>." data-en="Four integrated disciplines.<br>One <em>systemic</em> vision.">Quatre disciplines intégrées.<br>Une vision <em>systémique</em>.</h2>
+      <p class="section-lead" data-fr="Nos quatre pôles collaborent en continu pour apporter à chaque projet une réponse technique, énergétique, opérationnelle et numérique — cohérente, coordonnée et orientée résultat." data-en="Our four hubs work in continuous collaboration to deliver each project a technical, energetic, operational, and digital response — coherent, coordinated, and results-driven.">Nos quatre pôles collaborent en continu pour apporter à chaque projet une réponse technique, énergétique, opérationnelle et numérique — cohérente, coordonnée et orientée résultat.</p>
+    </div>
+
+    <div class="hub-tabs reveal" style="transition-delay:0.1s">
+      <button class="hub-tab active" onclick="switchHub(0)" data-fr="Ingénierie & Bâtiment" data-en="Building Engineering">Ingénierie & Bâtiment</button>
+      <button class="hub-tab" onclick="switchHub(1)" data-fr="Énergie & Climat" data-en="Energy & Climate">Énergie & Climat</button>
+      <button class="hub-tab" onclick="switchHub(2)" data-fr="AMO & Urbanisme" data-en="AMO & Urban Design">AMO & Urbanisme</button>
+      <button class="hub-tab" onclick="switchHub(3)" data-fr="Digitalisation & Innovation" data-en="Digitalization & Innovation">Digitalisation & Innovation</button>
+    </div>
+
+    <div class="hub-panels">
+      <!-- Hub 1 -->
+      <div class="hub-panel active" id="hub-0">
+        <div class="hub-info">
+          <div style="margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80&fit=crop" alt="Ingénierie bâtiment durable" style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <h3 data-fr="Ingénierie &<br><em>Bâtiment Durable</em>" data-en="Sustainable<br><em>Building Engineering</em>">Ingénierie &<br><em>Bâtiment Durable</em></h3>
+          <p data-fr="Fondement technique de tout projet, ce pôle couvre l'ensemble des disciplines du bâtiment avec une approche bioclimatique et orientée performance. Nous intervenons sur la structure, les fluides, l'électricité, la thermique et la gestion technique centralisée." data-en="The technical foundation of every project, this hub covers all building disciplines with a bioclimatic and performance-oriented approach. We address structure, MEP, electrical, thermodynamics, and intelligent building management.">Fondement technique de tout projet, ce pôle couvre l'ensemble des disciplines du bâtiment avec une approche bioclimatique et orientée performance. Nous intervenons sur la structure, les fluides, l'électricité, la thermique et la gestion technique centralisée.</p>
+          <div class="hub-value" data-fr="Un seul prestataire technique pour l'ensemble des corps de métier. Moins de coordination, plus de cohérence, zéro perte d'information entre disciplines." data-en="A single technical provider for all disciplines. Less coordination overhead, greater coherence, zero information loss between trades.">Un seul prestataire technique pour l'ensemble des corps de métier. Moins de coordination, plus de cohérence, zéro perte d'information entre disciplines.</div>
+        </div>
+        <div class="hub-items">
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Études TCE" data-en="Multidisciplinary Studies">Études TCE</strong> — <span data-fr="Structure, fluides, électricité, CVC, thermique" data-en="Structure, fluids, electricity, HVAC, thermodynamics">Structure, fluides, électricité, CVC, thermique</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Conception bioclimatique" data-en="Performance Design">Conception bioclimatique</strong> — <span data-fr="Optimisation énergétique et performance environnementale" data-en="Energy optimization and environmental performance">Optimisation énergétique et performance environnementale</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Diagnostics réglementaires" data-en="Technical Diagnostics">Diagnostics réglementaires</strong> — <span data-fr="DPE, DTG, PPPT, audits de performance, analyses de risques" data-en="DPE, DTG, PPPT, performance audits, risk analysis">DPE, DTG, PPPT, audits de performance, analyses de risques</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="GTC & GTB" data-en="Smart Systems">GTC & GTB</strong> — <span data-fr="Supervision intelligente et centralisée des bâtiments" data-en="Centralized intelligent building supervision (BMS/BAS)">Supervision intelligente et centralisée des bâtiments</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Aménagement intérieur" data-en="Interior Ergonomics">Aménagement intérieur</strong> — <span data-fr="Plans, ergonomie, confort, design durable et bien-être" data-en="Floor plans, comfort, sustainable design, workplace well-being">Plans, ergonomie, confort, design durable et bien-être</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Certifications" data-en="Certification Mastery">Certifications</strong> — <span>HQE · BREEAM · WELL · ISO</span></span></div>
+        </div>
+      </div>
+
+      <!-- Hub 2 -->
+      <div class="hub-panel" id="hub-1">
+        <div class="hub-info">
+          <div style="margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80&fit=crop" alt="Énergie solaire renouvelable" style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <h3 data-fr="Énergie, Environnement<br>& <em>Climat</em>" data-en="Energy, Environment<br>& <em>Climate</em>">Énergie, Environnement<br>& <em>Climat</em></h3>
+          <p data-fr="Anticiper les contraintes climatiques, réduire les consommations, valoriser les gisements d'économies et structurer une stratégie carbone crédible. Ce pôle transforme les obligations réglementaires en opportunités économiques pour vos actifs." data-en="Anticipate climate constraints, reduce consumption, unlock savings, and structure a credible carbon strategy. This hub transforms regulatory obligations into economic opportunities for your assets.">Anticiper les contraintes climatiques, réduire les consommations, valoriser les gisements d'économies et structurer une stratégie carbone crédible. Ce pôle transforme les obligations réglementaires en opportunités économiques pour vos actifs.</p>
+          <div class="hub-value" data-fr="Nous transformons les contraintes réglementaires et climatiques en opportunités : réduction de facture, valorisation CEE, conformité anticipée, actifs requalifiés." data-en="We transform regulatory and climate constraints into opportunities: reduced energy bills, CEE valorization, anticipated compliance, requalified assets.">Nous transformons les contraintes réglementaires et climatiques en opportunités : réduction de facture, valorisation CEE, conformité anticipée, actifs requalifiés.</div>
+        </div>
+        <div class="hub-items">
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Études énergétiques" data-en="Energy & Carbon Strategy">Études énergétiques</strong> — <span data-fr="Simulations thermiques dynamiques, bilan carbone, stratégie bas carbone" data-en="Dynamic thermal simulations, comprehensive carbon footprinting, low-carbon strategies">Simulations thermiques dynamiques, bilan carbone, stratégie bas carbone</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Énergies renouvelables" data-en="Renewable Deployment">Énergies renouvelables</strong> — <span data-fr="Solaire, hydraulique, biomasse, géothermie" data-en="Solar, hydraulic, biomass, and geothermal solutions">Solaire, hydraulique, biomasse, géothermie</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Performance & CEE" data-en="Performance Tracking">Performance & CEE</strong> — <span data-fr="Suivi des KPI, plans d'action correctifs, ingénierie financière CEE" data-en="Monitoring energy KPIs, corrective action plans, financial engineering for CEE">Suivi des KPI, plans d'action correctifs, ingénierie financière CEE</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Économie circulaire" data-en="Circular Economy">Économie circulaire</strong> — <span data-fr="Gestion environnementale, biodiversité, recyclage des matériaux" data-en="Environmental management, biodiversity preservation, material recycling">Gestion environnementale, biodiversité, recyclage des matériaux</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Îlots de chaleur urbains" data-en="Urban Climate Resilience">Îlots de chaleur urbains</strong> — <span data-fr="Diagnostic, modélisation microclimatique, végétalisation, albédo, gestion de l'eau" data-en="Microclimate modeling, revegetation, albedo optimization, water management">Diagnostic, modélisation microclimatique, végétalisation, albédo, gestion de l'eau</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Conformité réglementaire" data-en="Regulatory Compliance">Conformité réglementaire</strong> — <span data-fr="Expertise réglementaire et conformité environnementale" data-en="Regulatory expertise and environmental compliance">Expertise réglementaire et conformité environnementale</span></span></div>
+        </div>
+      </div>
+
+      <!-- Hub 3 -->
+      <div class="hub-panel" id="hub-2">
+        <div class="hub-info">
+          <div style="margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);">
+            <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80&fit=crop" alt="Urbanisme et smart city" style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <h3 data-fr="AMO, Aménagement<br>& <em>Urbanisme</em>" data-en="AMO, Urban Planning<br>& <em>Design</em>">AMO, Aménagement<br>& <em>Urbanisme</em></h3>
+          <p data-fr="Piloter un projet complexe exige une coordination experte de multiples acteurs et une vision globale à chaque étape. Ce pôle place le maître d'ouvrage au centre, en garantissant la cohérence des décisions et le respect des engagements." data-en="Managing a complex project demands expert coordination of multiple stakeholders and a global vision at every stage. This hub centers the project owner, ensuring decision coherence and commitment compliance.">Piloter un projet complexe exige une coordination experte de multiples acteurs et une vision globale à chaque étape. Ce pôle place le maître d'ouvrage au centre, en garantissant la cohérence des décisions et le respect des engagements.</p>
+          <div class="hub-value" data-fr="Nous représentons vos intérêts, traduisons vos objectifs en exigences techniques et garantissons que le projet livré correspond au projet voulu." data-en="We represent your interests, translate your objectives into technical requirements, and guarantee that the delivered project matches the intended one.">Nous représentons vos intérêts, traduisons vos objectifs en exigences techniques et garantissons que le projet livré correspond au projet voulu.</div>
+        </div>
+        <div class="hub-items">
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="AMO complète" data-en="Full AMO">AMO complète</strong> — <span data-fr="Technique, énergétique, environnementale et opérationnelle" data-en="Technical, energetic, environmental, and operational assistance">Technique, énergétique, environnementale et opérationnelle</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Coordination multi-acteurs" data-en="Complex Project Steering">Coordination multi-acteurs</strong> — <span data-fr="Planification et pilotage de projets complexes" data-en="Multi-actor coordination, advanced scheduling, and planning">Planification et pilotage de projets complexes</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Infrastructures durables" data-en="Sustainable Infrastructure">Infrastructures durables</strong> — <span data-fr="Mobilité douce, infrastructures vertes, gestion des eaux pluviales" data-en="Soft mobility, green infrastructures, stormwater management">Mobilité douce, infrastructures vertes, gestion des eaux pluviales</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Urbanisme stratégique" data-en="Macro-Level Design">Urbanisme stratégique</strong> — <span data-fr="Plans directeurs, études de faisabilité, écoquartiers, smart cities" data-en="Master plans, feasibility studies, eco-neighborhoods, smart cities">Plans directeurs, études de faisabilité, écoquartiers, smart cities</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Résilience climatique" data-en="Climate Adaptation">Résilience climatique</strong> — <span data-fr="Conception urbaine résiliente face au changement climatique" data-en="Designing urban spaces built to be resilient against climate change">Conception urbaine résiliente face au changement climatique</span></span></div>
+        </div>
+      </div>
+
+      <!-- Hub 4 -->
+      <div class="hub-panel" id="hub-3">
+        <div class="hub-info">
+          <div style="margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);">
+            <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=800&q=80&fit=crop" alt="BIM digital twin technologie" style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+          </div>
+          <h3 data-fr="Digitalisation<br>& <em>Innovation</em>" data-en="Digitalization<br>& <em>Innovation</em>">Digitalisation<br>& <em>Innovation</em></h3>
+          <p data-fr="Le numérique n'est pas une option dans l'ingénierie moderne. Ce pôle mobilise les technologies de pointe pour améliorer la conception, optimiser l'exploitation et anticiper les défaillances — le tout au service de la transition écologique." data-en="Digital is not optional in modern engineering. This hub deploys cutting-edge technologies to improve design, optimize operations, and anticipate failures — all in service of the ecological transition.">Le numérique n'est pas une option dans l'ingénierie moderne. Ce pôle mobilise les technologies de pointe pour améliorer la conception, optimiser l'exploitation et anticiper les défaillances — le tout au service de la transition écologique.</p>
+          <div class="hub-value" data-fr="Des bâtiments qui se pilotent, s'optimisent et se maintiennent intelligemment — pour des économies mesurables et une gestion patrimoniale de long terme." data-en="Buildings that manage, optimize, and maintain themselves intelligently — for measurable savings and long-term asset management.">Des bâtiments qui se pilotent, s'optimisent et se maintiennent intelligemment — pour des économies mesurables et une gestion patrimoniale de long terme.</div>
+        </div>
+        <div class="hub-items">
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="BIM & Jumeaux numériques" data-en="BIM & Digital Twins">BIM & Jumeaux numériques</strong> — <span data-fr="Déploiement BIM, création de jumeaux numériques, modélisation 3D collaborative" data-en="Full BIM deployment, digital twin creation, collaborative 3D modeling">Déploiement BIM, création de jumeaux numériques, modélisation 3D collaborative</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Outils de diagnostic digital" data-en="Digital Diagnostic Tools">Outils de diagnostic digital</strong> — <span data-fr="Reporting GTB, pilotage environnemental et énergétique" data-en="Building management reporting and diagnostic systems">Reporting GTB, pilotage environnemental et énergétique</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Maintenance prédictive" data-en="Predictive Maintenance">Maintenance prédictive</strong> — <span data-fr="GMAO et plateformes connectées pour l'exploitation long terme" data-en="CMMS and connected platforms for long-term asset optimization">GMAO et plateformes connectées pour l'exploitation long terme</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Analytique temps réel" data-en="Real-Time Analytics">Analytique temps réel</strong> — <span data-fr="Capteurs IoT, automatisation, supervision énergétique en temps réel" data-en="IoT sensors, automation, real-time energy supervision">Capteurs IoT, automatisation, supervision énergétique en temps réel</span></span></div>
+          <div class="hub-item"><div class="hub-item-dot"></div><span><strong data-fr="Levier numérique" data-en="The Digital Lever">Levier numérique</strong> — <span data-fr="Le digital comme accélérateur de la transition écologique et de l'efficacité opérationnelle" data-en="Digital integration as the primary accelerator for ecological transition and efficiency">Le digital comme accélérateur de la transition écologique et de l'efficacité opérationnelle</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MÉTHODOLOGIE ═══════════════════ -->
+<section id="methodologie">
+  <div class="container">
+    <div class="method-grid">
+      <div class="method-sticky reveal">
+        <p class="section-tag" data-fr="Notre approche" data-en="Our Approach">Notre approche</p>
+        <h2 class="section-h2" style="font-size:2.5rem" data-fr="De la réflexion à la <em>réception</em>" data-en="From concept<br>to <em>commissioning</em>">De la réflexion à la <em>réception</em></h2>
+        <p style="font-size:0.9rem;color:var(--text-dim);line-height:1.8;margin-top:1rem" data-fr="Nous n'intervenons pas sur des études isolées. Nous accompagnons des projets dans leur globalité, en garantissant la cohérence technique, la conformité réglementaire et la maîtrise des coûts à chaque phase." data-en="We do not handle isolated studies. We shepherd entire projects, ensuring technical coherence, regulatory compliance, and cost control at every phase.">Nous n'intervenons pas sur des études isolées. Nous accompagnons des projets dans leur globalité, en garantissant la cohérence technique, la conformité réglementaire et la maîtrise des coûts à chaque phase.</p>
+        <div style="margin-top:2rem;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 20px rgba(30,45,74,0.08);">
+          <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=700&q=80&fit=crop" alt="Suivi de chantier ingénierie" style="width:100%;height:200px;object-fit:cover;display:block;">
+        </div>
+        <div style="margin-top:1.5rem;padding:1.5rem;border:1px solid var(--border);background:var(--green-dim)">
+          <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.2em;color:var(--green);text-transform:uppercase;margin-bottom:0.5rem" data-fr="Objectif constant" data-en="Constant objective">Objectif constant</p>
+          <p style="font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--heading);line-height:1.4" data-fr="Qualité, durabilité et maîtrise des coûts — à chaque phase." data-en="Quality, sustainability, and cost control — at every phase.">Qualité, durabilité et maîtrise des coûts — à chaque phase.</p>
+        </div>
+      </div>
+
+      <div class="method-steps reveal" style="transition-delay:0.15s">
+        <div class="method-step active" onclick="toggleStep(this)">
+          <div class="method-step-num">
+            <div class="method-num-circle">01</div>
+            <div class="method-line"></div>
+          </div>
+          <div class="method-content">
+            <h4 class="method-title" data-fr="Analyse du Besoin & Cadrage Stratégique" data-en="Needs Analysis & Strategic Framing">Analyse du Besoin & Cadrage Stratégique</h4>
+            <div class="method-body">
+              <p data-fr="Tout projet commence par une compréhension fine de vos objectifs. Nous définissons ensemble le périmètre d'intervention, les indicateurs de succès et la stratégie d'ensemble — avant toute action." data-en="Every project begins with a thorough understanding of your objectives. We jointly define the scope, success indicators, and overall strategy — before any action is taken.">Tout projet commence par une compréhension fine de vos objectifs. Nous définissons ensemble le périmètre d'intervention, les indicateurs de succès et la stratégie d'ensemble — avant toute action.</p>
+              <div class="method-tags">
+                <span class="method-tag">Cadrage</span>
+                <span class="method-tag">Analyse</span>
+                <span class="method-tag">Stratégie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="method-step" onclick="toggleStep(this)">
+          <div class="method-step-num">
+            <div class="method-num-circle">02</div>
+            <div class="method-line"></div>
+          </div>
+          <div class="method-content">
+            <h4 class="method-title" data-fr="Diagnostic & Audit" data-en="Diagnostics & Audits">Diagnostic & Audit</h4>
+            <div class="method-body">
+              <p data-fr="Avant toute décision, nous établissons une photographie précise et objective de l'existant. Diagnostics techniques, énergétiques, réglementaires — appuyés sur des méthodes normalisées et des outils de mesure fiables." data-en="Before any decision, we build a precise, objective picture of the existing situation. Technical, energy, and regulatory diagnostics — backed by standardized methodologies and reliable measurement tools.">Avant toute décision, nous établissons une photographie précise et objective de l'existant. Diagnostics techniques, énergétiques, réglementaires — appuyés sur des méthodes normalisées et des outils de mesure fiables.</p>
+              <div class="method-tags">
+                <span class="method-tag">DPE</span>
+                <span class="method-tag">DTG</span>
+                <span class="method-tag">PPPT</span>
+                <span class="method-tag">Audit énergétique</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="method-step" onclick="toggleStep(this)">
+          <div class="method-step-num">
+            <div class="method-num-circle">03</div>
+            <div class="method-line"></div>
+          </div>
+          <div class="method-content">
+            <h4 class="method-title" data-fr="Études de Faisabilité & Conception" data-en="Feasibility Studies & Design">Études de Faisabilité & Conception</h4>
+            <div class="method-body">
+              <p data-fr="Sur la base du diagnostic, nous concevons des solutions adaptées et économiquement maîtrisées. Nous comparons les scénarios, modélisons les retours sur investissement et recommandons les arbitrages les plus pertinents." data-en="Building on the diagnosis, we design adapted and economically sound solutions. We compare scenarios, model ROI, and recommend the most appropriate course of action.">Sur la base du diagnostic, nous concevons des solutions adaptées et économiquement maîtrisées. Nous comparons les scénarios, modélisons les retours sur investissement et recommandons les arbitrages les plus pertinents.</p>
+              <div class="method-tags">
+                <span class="method-tag">Conception bioclimatique</span>
+                <span class="method-tag">BIM</span>
+                <span class="method-tag">ROI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="method-step" onclick="toggleStep(this)">
+          <div class="method-step-num">
+            <div class="method-num-circle">04</div>
+            <div class="method-line"></div>
+          </div>
+          <div class="method-content">
+            <h4 class="method-title" data-fr="AMO & Pilotage Multi-Acteurs" data-en="Project Management Assistance (AMO)">AMO & Pilotage Multi-Acteurs</h4>
+            <div class="method-body">
+              <p data-fr="En phase AMO, nous représentons vos intérêts face aux prestataires, coordonnons les acteurs et veillons au respect des engagements pris en phase études. Planification, contrôle budgétaire, reporting régulier." data-en="In the AMO phase, we represent your interests vis-à-vis contractors, coordinate all stakeholders, and ensure commitments from the study phase are upheld. Scheduling, budget control, regular reporting.">En phase AMO, nous représentons vos intérêts face aux prestataires, coordonnons les acteurs et veillons au respect des engagements pris en phase études. Planification, contrôle budgétaire, reporting régulier.</p>
+              <div class="method-tags">
+                <span class="method-tag">Coordination</span>
+                <span class="method-tag">Planning</span>
+                <span class="method-tag">Budget</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="method-step" onclick="toggleStep(this)">
+          <div class="method-step-num">
+            <div class="method-num-circle">05</div>
+            <div class="method-line"></div>
+          </div>
+          <div class="method-content">
+            <h4 class="method-title" data-fr="Suivi d'Exécution & Réception" data-en="Construction Monitoring & Handover">Suivi d'Exécution & Réception</h4>
+            <div class="method-body">
+              <p data-fr="Sur chantier, notre présence garantit la conformité des travaux aux prescriptions techniques et aux engagements environnementaux. Nous accompagnons la réception et gérons la levée des réserves." data-en="On-site, our presence guarantees compliance of works with technical specifications and environmental commitments. We support the handover process and manage the clearance of outstanding items.">Sur chantier, notre présence garantit la conformité des travaux aux prescriptions techniques et aux engagements environnementaux. Nous accompagnons la réception et gérons la levée des réserves.</p>
+              <div class="method-tags">
+                <span class="method-tag">Contrôle</span>
+                <span class="method-tag">Conformité</span>
+                <span class="method-tag">Réception</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="method-step" onclick="toggleStep(this)">
+          <div class="method-step-num">
+            <div class="method-num-circle">06</div>
+            <div class="method-line"></div>
+          </div>
+          <div class="method-content">
+            <h4 class="method-title" data-fr="Exploitation & Optimisation Continue" data-en="Operations & Continuous Optimization">Exploitation & Optimisation Continue</h4>
+            <div class="method-body">
+              <p data-fr="Notre accompagnement ne s'arrête pas à la livraison. Nous aidons nos clients à piloter leurs actifs intelligemment, mesurer les performances réelles et identifier les axes d'amélioration continue." data-en="Our support does not end at delivery. We help clients operate their assets intelligently, measure real-world performance, and identify opportunities for ongoing improvement.">Notre accompagnement ne s'arrête pas à la livraison. Nous aidons nos clients à piloter leurs actifs intelligemment, mesurer les performances réelles et identifier les axes d'amélioration continue.</p>
+              <div class="method-tags">
+                <span class="method-tag">GTB</span>
+                <span class="method-tag">IoT</span>
+                <span class="method-tag">GMAO</span>
+                <span class="method-tag">KPI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SECTEURS ═══════════════════ -->
+<section id="secteurs">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag" data-fr="Périmètres d'intervention" data-en="Sectors We Serve">Périmètres d'intervention</p>
+      <h2 class="section-h2" data-fr="Une expertise sectorielle<br><em>transversale</em>" data-en="Cross-sector expertise,<br><em>tailored to every context</em>">Une expertise sectorielle<br><em>transversale</em></h2>
+      <p class="section-lead" data-fr="Chaque secteur a ses contraintes propres. SINERGY CONSEIL les connaît et adapte son approche pour apporter des réponses techniques pertinentes, conformes et économiquement responsables." data-en="Every sector has its own constraints. SINERGY CONSEIL knows them and adapts its approach to deliver technically sound, compliant, and economically responsible responses.">Chaque secteur a ses contraintes propres. SINERGY CONSEIL les connaît et adapte son approche pour apporter des réponses techniques pertinentes, conformes et économiquement responsables.</p>
+    </div>
+
+    <div class="sectors-grid reveal" style="transition-delay:0.1s">
+      <div class="sector-card">
+        <span class="sector-icon">🏛</span>
+        <h3 class="sector-title" data-fr="Équipements Publics & Privés" data-en="Public & Private Facilities">Équipements Publics & Privés</h3>
+        <p class="sector-text" data-fr="Mairies, centres culturels, équipements sportifs, lieux de spectacle. Des projets à forts enjeux de performance et de conformité réglementaire." data-en="Town halls, cultural centers, sports facilities, performance venues. High-stakes projects with demanding performance and regulatory requirements.">Mairies, centres culturels, équipements sportifs, lieux de spectacle. Des projets à forts enjeux de performance et de conformité réglementaire.</p>
+        <div class="sector-missions">
+          <span class="sector-mission" data-fr="Diagnostics techniques & réglementaires" data-en="Technical & regulatory diagnostics">Diagnostics techniques & réglementaires</span>
+          <span class="sector-mission" data-fr="AMO sur rénovation globale" data-en="AMO on comprehensive renovation">AMO sur rénovation globale</span>
+          <span class="sector-mission" data-fr="Certifications HQE & BREEAM" data-en="HQE & BREEAM certification">Certifications HQE & BREEAM</span>
+        </div>
+      </div>
+      <div class="sector-card">
+        <span class="sector-icon">🏢</span>
+        <h3 class="sector-title" data-fr="Tertiaire & Bureaux" data-en="Tertiary / Corporate">Tertiaire & Bureaux</h3>
+        <p class="sector-text" data-fr="Immeubles de bureaux, campus d'entreprise, sièges sociaux. Optimisation des actifs, bien-être des occupants et conformité au Décret Tertiaire." data-en="Office buildings, corporate campuses, headquarters. Asset optimization, occupant well-being, and compliance with energy reduction legislation.">Immeubles de bureaux, campus d'entreprise, sièges sociaux. Optimisation des actifs, bien-être des occupants et conformité au Décret Tertiaire.</p>
+        <div class="sector-missions">
+          <span class="sector-mission" data-fr="Audit & plan de sobriété" data-en="Energy audit & reduction plan">Audit & plan de sobriété</span>
+          <span class="sector-mission" data-fr="Stratégie bas carbone" data-en="Low-carbon strategy">Stratégie bas carbone</span>
+          <span class="sector-mission" data-fr="Certification WELL" data-en="WELL certification">Certification WELL</span>
+        </div>
+      </div>
+      <div class="sector-card">
+        <span class="sector-icon">🛍</span>
+        <h3 class="sector-title" data-fr="Commerce & Retail" data-en="Retail & Commerce">Commerce & Retail</h3>
+        <p class="sector-text" data-fr="Centres commerciaux, retail parks, grandes surfaces. Réduction des charges d'exploitation et conformité réglementaire — des solutions concrètes et mesurables." data-en="Shopping centers, retail parks, hypermarkets. Reducing operating costs and achieving regulatory compliance — concrete, measurable solutions.">Centres commerciaux, retail parks, grandes surfaces. Réduction des charges d'exploitation et conformité réglementaire — des solutions concrètes et mesurables.</p>
+        <div class="sector-missions">
+          <span class="sector-mission" data-fr="Audit multi-sites" data-en="Multi-site audits">Audit multi-sites</span>
+          <span class="sector-mission" data-fr="Optimisation CVC & éclairage" data-en="HVAC & lighting optimization">Optimisation CVC & éclairage</span>
+          <span class="sector-mission" data-fr="BREEAM In-Use" data-en="BREEAM In-Use">BREEAM In-Use</span>
+        </div>
+      </div>
+      <div class="sector-card">
+        <span class="sector-icon">🏠</span>
+        <h3 class="sector-title" data-fr="Logement" data-en="Housing">Logement</h3>
+        <p class="sector-text" data-fr="Bailleurs sociaux, promoteurs, copropriétés. Diagnostics obligatoires, accompagnement à la rénovation et plans de travaux pluriannuels." data-en="Social landlords, developers, co-ownership associations. Mandatory diagnostics, renovation support, and multi-year works planning.">Bailleurs sociaux, promoteurs, copropriétés. Diagnostics obligatoires, accompagnement à la rénovation et plans de travaux pluriannuels.</p>
+        <div class="sector-missions">
+          <span class="sector-mission">DPE · DTG · PPPT</span>
+          <span class="sector-mission" data-fr="Maîtrise d'œuvre technique" data-en="Technical project management">Maîtrise d'œuvre technique</span>
+          <span class="sector-mission" data-fr="Audits préalables à rénovation" data-en="Pre-renovation audits">Audits préalables à rénovation</span>
+        </div>
+      </div>
+      <div class="sector-card">
+        <span class="sector-icon">🏭</span>
+        <h3 class="sector-title" data-fr="Logistique & Industrie" data-en="Logistics & Industry">Logistique & Industrie</h3>
+        <p class="sector-text" data-fr="Entrepôts, plateformes logistiques, sites industriels. Consommation, conformité et performance des installations techniques — des enjeux spécifiques et exigeants." data-en="Warehouses, logistics platforms, industrial sites. Specific and demanding challenges in energy consumption, technical system compliance, and operational performance.">Entrepôts, plateformes logistiques, sites industriels. Consommation, conformité et performance des installations techniques.</p>
+        <div class="sector-missions">
+          <span class="sector-mission" data-fr="Études techniques CVC / électricité" data-en="HVAC / electrical technical studies">Études techniques CVC / électricité</span>
+          <span class="sector-mission" data-fr="Audit énergétique industriel" data-en="Industrial energy audit">Audit énergétique industriel</span>
+          <span class="sector-mission" data-fr="Solaire en toiture" data-en="Rooftop solar integration">Solaire en toiture</span>
+        </div>
+      </div>
+      <div class="sector-card">
+        <span class="sector-icon">🎓</span>
+        <h3 class="sector-title" data-fr="Formation & Recherche" data-en="Education & Research">Formation & Recherche</h3>
+        <p class="sector-text" data-fr="Universités, grandes écoles, centres de recherche. Des bâtiments à usages intensifs qui requièrent une conception fine, un confort optimal et une gestion énergétique rigoureuse." data-en="Universities, engineering schools, research centers. High-intensity buildings requiring careful design, optimal comfort, and rigorous energy management.">Universités, grandes écoles, centres de recherche. Des bâtiments à usages intensifs qui requièrent une conception fine et un confort optimal.</p>
+        <div class="sector-missions">
+          <span class="sector-mission" data-fr="Conception bioclimatique de campus" data-en="Bioclimatic campus design">Conception bioclimatique de campus</span>
+          <span class="sector-mission" data-fr="Smart building & GTB" data-en="Smart building & BMS">Smart building & GTB</span>
+          <span class="sector-mission" data-fr="HQE Enseignement" data-en="HQE Education">HQE Enseignement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CERTIFICATIONS ═══════════════════ -->
+
+<!-- ═══════════════════ GALLERY STRIP ═══════════════════ -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);height:260px;overflow:hidden;">
+  <div style="overflow:hidden;position:relative;">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=80&fit=crop" alt="Tertiaire bureaux" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+    <div style="position:absolute;inset:0;background:rgba(30,45,74,0.45);display:flex;align-items:flex-end;padding:1.2rem;transition:background 0.3s;" onmouseover="this.style.background='rgba(46,125,142,0.35)'" onmouseout="this.style.background='rgba(30,45,74,0.45)'">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:#fff;text-transform:uppercase;">Tertiaire</span>
+    </div>
+  </div>
+  <div style="overflow:hidden;position:relative;">
+    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&q=80&fit=crop" alt="Commerce retail" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+    <div style="position:absolute;inset:0;background:rgba(30,45,74,0.45);display:flex;align-items:flex-end;padding:1.2rem;transition:background 0.3s;" onmouseover="this.style.background='rgba(46,125,142,0.35)'" onmouseout="this.style.background='rgba(30,45,74,0.45)'">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:#fff;text-transform:uppercase;">Commerce</span>
+    </div>
+  </div>
+  <div style="overflow:hidden;position:relative;">
+    <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=500&q=80&fit=crop" alt="Logistique industrie" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+    <div style="position:absolute;inset:0;background:rgba(30,45,74,0.45);display:flex;align-items:flex-end;padding:1.2rem;transition:background 0.3s;" onmouseover="this.style.background='rgba(46,125,142,0.35)'" onmouseout="this.style.background='rgba(30,45,74,0.45)'">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:#fff;text-transform:uppercase;">Industrie</span>
+    </div>
+  </div>
+  <div style="overflow:hidden;position:relative;">
+    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80&fit=crop" alt="Formation recherche" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
+    <div style="position:absolute;inset:0;background:rgba(30,45,74,0.45);display:flex;align-items:flex-end;padding:1.2rem;transition:background 0.3s;" onmouseover="this.style.background='rgba(46,125,142,0.35)'" onmouseout="this.style.background='rgba(30,45,74,0.45)'">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:#fff;text-transform:uppercase;">Formation</span>
+    </div>
+  </div>
+</div>
+
+<section id="certifications">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag" data-fr="Référentiels maîtrisés" data-en="Standards We Master">Référentiels maîtrisés</p>
+      <h2 class="section-h2" data-fr="Les certifications les plus<br>exigeantes du <em>marché</em>" data-en="The most demanding<br>certifications on the <em>market</em>">Les certifications les plus<br>exigeantes du <em>marché</em></h2>
+    </div>
+    <div style="margin-bottom:3rem;position:relative;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 24px rgba(30,45,74,0.08);">
+      <img src="https://images.unsplash.com/photo-1581093583449-8255a7d46e66?w=1400&q=80&fit=crop" alt="Performance énergétique certification" style="width:100%;height:300px;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(30,45,74,0.85) 0%,rgba(30,45,74,0.3) 60%,transparent 100%);display:flex;align-items:center;padding:3rem;">
+        <div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.25em;color:#A8D8E2;text-transform:uppercase;margin-bottom:0.8rem;">Référentiels maîtrisés</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:#fff;line-height:1.15;">Ingénierie conçue pour atteindre<br>les standards <em style="color:#A8D8E2;font-style:italic;">les plus exigeants</em>.</h3>
+        </div>
+      </div>
+    </div>
+    <div class="cert-grid reveal" style="transition-delay:0.1s">
+      <div class="cert-item">
+        <div class="cert-badge">NF HQE</div>
+        <div class="cert-name">Haute Qualité Environnementale</div>
+        <div class="cert-desc" data-fr="Référentiel de performance durable pour les bâtiments français. Management de la qualité environnementale de la conception à l'exploitation." data-en="French sustainable building performance standard. Environmental quality management from design to operation.">Référentiel de performance durable pour les bâtiments français. Management de la qualité environnementale de la conception à l'exploitation.</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-badge">BREEAM</div>
+        <div class="cert-name">Building Research Establishment</div>
+        <div class="cert-desc" data-fr="Certification internationale de durabilité bâtimentaire. Standard reconnu dans plus de 70 pays pour évaluer et améliorer la performance environnementale." data-en="International building sustainability certification. Standard recognized in 70+ countries to assess and improve environmental performance.">Certification internationale de durabilité bâtimentaire. Standard reconnu dans plus de 70 pays.</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-badge">WELL</div>
+        <div class="cert-name">Well Building Standard</div>
+        <div class="cert-desc" data-fr="Standard international axé sur la santé et le bien-être des occupants : air, eau, alimentation, lumière, mouvement, confort thermique, acoustique." data-en="Global standard focused on occupant health and well-being: air, water, nourishment, light, movement, thermal comfort, acoustics.">Standard international axé sur la santé et le bien-être des occupants. Confort thermique, acoustique et qualité de l'air.</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-badge">ISO</div>
+        <div class="cert-name">International Organization</div>
+        <div class="cert-desc" data-fr="Systèmes de management et conformité internationale. ISO 14001 (environnement), ISO 50001 (énergie) et autres normes sectorielles." data-en="International management systems and compliance standards. ISO 14001 (environment), ISO 50001 (energy), and other sector-specific norms.">Systèmes de management et conformité internationale. ISO 14001, ISO 50001 et autres normes sectorielles.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ RÉFÉRENCES ═══════════════════ -->
+
+<!-- ═══════════════════ IMAGE BAND ═══════════════════ -->
+<div style="position:relative;height:420px;overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=85&fit=crop" alt="Architecture durable" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,45,74,0.88) 0%,rgba(46,125,142,0.65) 100%);"></div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.3em;color:#A8D8E2;text-transform:uppercase;margin-bottom:1.2rem;">Europe &amp; Afrique</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#fff;line-height:1.2;max-width:720px;">Des projets qui <em style="color:#A8D8E2;font-style:italic;">durent</em>, conçus avec rigueur et vision.</h2>
+    <div style="display:flex;gap:4rem;margin-top:2.5rem;flex-wrap:wrap;justify-content:center;">
+      <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:#A8D8E2;line-height:1;">4</div><div style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:0.3rem;">Pôles intégrés</div></div>
+      <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:#A8D8E2;line-height:1;">12+</div><div style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:0.3rem;">Clients de référence</div></div>
+      <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:#A8D8E2;line-height:1;">2</div><div style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:0.3rem;">Continents</div></div>
+      <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:#A8D8E2;line-height:1;">HQE+</div><div style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:0.3rem;">Certifications</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="references">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag" data-fr="Nos références" data-en="Our References">Nos références</p>
+      <h2 class="section-h2" data-fr="La confiance de grandes<br><em>organisations</em>" data-en="Trusted by industry<br><em>leaders</em>">La confiance de grandes<br><em>organisations</em></h2>
+      <p class="section-lead" data-fr="Des maîtres d'ouvrage publics et privés parmi les plus exigeants du marché font appel à SINERGY CONSEIL pour leurs projets les plus stratégiques." data-en="Some of the most demanding public and private project owners rely on SINERGY CONSEIL for their most strategic projects.">Des maîtres d'ouvrage publics et privés parmi les plus exigeants du marché font appel à SINERGY CONSEIL pour leurs projets les plus stratégiques.</p>
+    </div>
+  </div>
+
+  <div class="ref-marquee-wrap reveal" style="transition-delay:0.1s">
+    <div class="ref-marquee">
+      <div class="ref-item">Orange</div>
+      <div class="ref-item">SNCF</div>
+      <div class="ref-item">Banque de France</div>
+      <div class="ref-item">Klépierre</div>
+      <div class="ref-item">Atos</div>
+      <div class="ref-item">BHV</div>
+      <div class="ref-item">Action Logement</div>
+      <div class="ref-item">SCC</div>
+      <div class="ref-item">Groupe SGM</div>
+      <div class="ref-item">Etanco</div>
+      <div class="ref-item">Zénith</div>
+      <div class="ref-item">Les 3 Fontaines</div>
+      <!-- duplicate for seamless loop -->
+      <div class="ref-item">Orange</div>
+      <div class="ref-item">SNCF</div>
+      <div class="ref-item">Banque de France</div>
+      <div class="ref-item">Klépierre</div>
+      <div class="ref-item">Atos</div>
+      <div class="ref-item">BHV</div>
+      <div class="ref-item">Action Logement</div>
+      <div class="ref-item">SCC</div>
+      <div class="ref-item">Groupe SGM</div>
+      <div class="ref-item">Etanco</div>
+      <div class="ref-item">Zénith</div>
+      <div class="ref-item">Les 3 Fontaines</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="ref-grid reveal" style="transition-delay:0.15s">
+      <div class="ref-logo-item"><div class="ref-logo-text">Orange</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">SNCF</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">Banque de France</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">Klépierre</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">Atos</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">BHV</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">Action Logement</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">SCC</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">Groupe SGM</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">Etanco</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">Zénith</div></div>
+      <div class="ref-logo-item"><div class="ref-logo-text">Les 3 Fontaines</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA BAND ═══════════════════ -->
+<div id="cta-band">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2 data-fr="Parlons de votre projet." data-en="Let's talk about your project.">Parlons de votre projet.</h2>
+      <p data-fr="Audit, faisabilité, maîtrise d'œuvre, AMO, certification — nos équipes analysent votre situation et vous proposent une orientation claire, sans engagement." data-en="Audit, feasibility, project management, AMO, certification — our teams analyze your situation and propose a clear direction, with no obligation.">Audit, faisabilité, maîtrise d'œuvre, AMO, certification — nos équipes analysent votre situation et vous proposent une orientation claire, sans engagement.</p>
+    </div>
+    <a href="#contact" class="btn-dark" data-fr="Nous contacter →" data-en="Contact Us →">Nous contacter →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section id="contact" style="position:relative;">
+
+<div style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;">
+  <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=70&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.04;">
+</div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal">
+      <p class="section-tag" data-fr="Contact" data-en="Contact">Contact</p>
+      <h2 class="section-h2" data-fr="Parlons de votre <em>projet</em>" data-en="Let's discuss<br>your <em>project</em>">Parlons de votre <em>projet</em></h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <h3 data-fr="Votre premier contact avec SINERGY CONSEIL commence ici." data-en="Your first contact with SINERGY CONSEIL starts here.">Votre premier contact avec SINERGY CONSEIL commence ici.</h3>
+        <p style="font-size:0.875rem;color:var(--text-dim);line-height:1.8;margin-bottom:2.5rem" data-fr="Que vous souhaitiez réaliser un audit, lancer une étude de faisabilité ou engager une démarche de certification, nous répondons à toute demande sous 48 heures ouvrées." data-en="Whether you need an audit, a feasibility study, or a certification process, we respond to every inquiry within 48 business hours.">Que vous souhaitiez réaliser un audit, lancer une étude de faisabilité ou engager une démarche de certification, nous répondons à toute demande sous 48 heures ouvrées.</p>
+
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <div class="contact-detail-label" data-fr="Adresse" data-en="Address">Adresse</div>
+            <div class="contact-detail-value">16 Avenue Georges Daressy<br>95240 Cormeilles-en-Parisis</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <div class="contact-detail-label" data-fr="Téléphone" data-en="Phone">Téléphone</div>
+            <div class="contact-detail-value">
+              <a href="tel:+33134104843">+33 1 34 10 48 43</a><br>
+              <a href="tel:+33676433663">+33 6 76 43 36 63</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">✉</span>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value">
+              <a href="mailto:contact@sinergyconseil.com">contact@sinergyconseil.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">🌐</span>
+          <div>
+            <div class="contact-detail-label">Web</div>
+            <div class="contact-detail-value">
+              <a href="https://www.sinergyconseil.com">www.sinergyconseil.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.15s">
+        <form class="contact-form" onsubmit="handleForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" data-fr="Prénom *" data-en="First Name *">Prénom *</label>
+              <input type="text" class="form-input" placeholder="Jean" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-fr="Nom *" data-en="Last Name *">Nom *</label>
+              <input type="text" class="form-input" placeholder="Dupont" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" data-fr="Organisation *" data-en="Organization *">Organisation *</label>
+              <input type="text" class="form-input" placeholder="Votre société" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-fr="Fonction" data-en="Role">Fonction</label>
+              <input type="text" class="form-input" placeholder="Directeur Technique">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email *</label>
+              <input type="email" class="form-input" placeholder="jean@societe.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-fr="Téléphone" data-en="Phone">Téléphone</label>
+              <input type="tel" class="form-input" placeholder="+33 6 ...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-fr="Type de demande *" data-en="Request Type *">Type de demande *</label>
+            <select class="form-select" required>
+              <option value="" data-fr="Sélectionner..." data-en="Select...">Sélectionner...</option>
+              <option value="amo" data-fr="Assistance à Maîtrise d'Ouvrage (AMO)" data-en="Project Management Assistance (AMO)">Assistance à Maîtrise d'Ouvrage (AMO)</option>
+              <option value="audit" data-fr="Audit & Diagnostic" data-en="Audit & Diagnostic">Audit & Diagnostic</option>
+              <option value="moe" data-fr="Maîtrise d'Œuvre" data-en="Project Management (MOE)">Maîtrise d'Œuvre</option>
+              <option value="energie" data-fr="Conseil Énergétique" data-en="Energy Consulting">Conseil Énergétique</option>
+              <option value="certification" data-fr="Certification (HQE, BREEAM, WELL, ISO)" data-en="Certification (HQE, BREEAM, WELL, ISO)">Certification (HQE, BREEAM, WELL, ISO)</option>
+              <option value="bim" data-fr="BIM & Digitalisation" data-en="BIM & Digitalization">BIM & Digitalisation</option>
+              <option value="autre" data-fr="Autre" data-en="Other">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-fr="Description de votre besoin *" data-en="Description of your need *">Description de votre besoin *</label>
+            <textarea class="form-textarea" placeholder="Décrivez votre projet, contexte, superficie, objectifs..." required></textarea>
+          </div>
+          <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+            <button type="submit" class="form-submit" data-fr="Envoyer ma demande →" data-en="Send My Request →">Envoyer ma demande →</button>
+            <p class="form-note" data-fr="Réponse garantie sous 48h ouvrées. Confidentialité assurée." data-en="Response guaranteed within 48 business hours. Full confidentiality.">Réponse garantie sous 48h ouvrées. Confidentialité assurée.</p>
+          </div>
+          <div id="form-success" style="display:none;padding:1rem;background:var(--green-dim);border:1px solid var(--green);color:var(--green);font-size:0.85rem"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">SINERGY CONSEIL</div>
+        <div class="footer-brand-sub" data-fr="Bureau d'Études Techniques & Ingénierie Durable" data-en="Technical Engineering & Sustainable Consultancy">Bureau d'Études Techniques & Ingénierie Durable</div>
+        <p class="footer-brand-desc" data-fr="Expert pluridisciplinaire en ingénierie du bâtiment, performance énergétique, AMO et digitalisation. Intervenant en Europe et en Afrique auprès de maîtres d'ouvrage publics et privés." data-en="Multidisciplinary expert in building engineering, energy performance, project management, and digitalization. Operating across Europe and Africa for public and private clients.">Expert pluridisciplinaire en ingénierie du bâtiment, performance énergétique, AMO et digitalisation. Intervenant en Europe et en Afrique.</p>
+      </div>
+      <div>
+        <h5 data-fr="Navigation" data-en="Navigation">Navigation</h5>
+        <ul class="footer-links">
+          <li><a href="#about" data-fr="À Propos" data-en="About Us">À Propos</a></li>
+          <li><a href="#expertises" data-fr="Nos Expertises" data-en="Our Expertise">Nos Expertises</a></li>
+          <li><a href="#methodologie" data-fr="Notre Méthode" data-en="Our Methodology">Notre Méthode</a></li>
+          <li><a href="#secteurs" data-fr="Secteurs" data-en="Sectors">Secteurs</a></li>
+          <li><a href="#references" data-fr="Références" data-en="References">Références</a></li>
+          <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-fr="Expertises" data-en="Expertise">Expertises</h5>
+        <ul class="footer-links">
+          <li><a href="#expertises" data-fr="Ingénierie Bâtiment" data-en="Building Engineering">Ingénierie Bâtiment</a></li>
+          <li><a href="#expertises" data-fr="Énergie & Climat" data-en="Energy & Climate">Énergie & Climat</a></li>
+          <li><a href="#expertises" data-fr="AMO & Urbanisme" data-en="AMO & Urban Design">AMO & Urbanisme</a></li>
+          <li><a href="#expertises" data-fr="Digitalisation" data-en="Digitalization">Digitalisation</a></li>
+          <li><a href="#certifications" data-fr="Certifications" data-en="Certifications">Certifications</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-fr="Contact" data-en="Contact">Contact</h5>
+        <ul class="footer-links">
+          <li><a href="mailto:contact@sinergyconseil.com">contact@sinergyconseil.com</a></li>
+          <li><a href="tel:+33134104843">+33 1 34 10 48 43</a></li>
+          <li><a href="tel:+33676433663">+33 6 76 43 36 63</a></li>
+          <li><a href="#">16 Av. Georges Daressy<br>95240 Cormeilles-en-Parisis</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 SINERGY CONSEIL — <span data-fr="Tous droits réservés" data-en="All rights reserved">Tous droits réservés</span></p>
+      <div class="footer-legal">
+        <a href="#" data-fr="Mentions légales" data-en="Legal Notice">Mentions légales</a>
+        <a href="#" data-fr="Politique de confidentialité" data-en="Privacy Policy">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════ NAV SCROLL ═══════════════════
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ═══════════════════ HAMBURGER ═══════════════════
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// ═══════════════════ REVEAL ON SCROLL ═══════════════════
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => observer.observe(el));
+
+// ═══════════════════ HUB TABS ═══════════════════
+function switchHub(idx) {
+  document.querySelectorAll('.hub-tab').forEach((t, i) => {
+    t.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.hub-panel').forEach((p, i) => {
+    p.classList.toggle('active', i === idx);
+  });
+}
+
+// ═══════════════════ METHOD STEPS ═══════════════════
+function toggleStep(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.method-step').forEach(s => s.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+
+// ═══════════════════ LANGUAGE SWITCHER ═══════════════════
+let currentLang = 'fr';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+  });
+
+  // Update all elements with data-fr / data-en
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    const text = el.getAttribute(`data-${lang}`);
+    if (!text) return;
+    // check if it has HTML (italic tags etc)
+    if (text.includes('<') || text.includes('&')) {
+      el.innerHTML = text;
+    } else {
+      el.textContent = text;
+    }
+  });
+
+  // Update options inside selects
+  document.querySelectorAll('option[data-fr]').forEach(opt => {
+    const text = opt.getAttribute(`data-${lang}`);
+    if (text) opt.textContent = text;
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[placeholder]').forEach(el => {
+    const ph = el.getAttribute(`data-placeholder-${lang}`);
+    if (ph) el.placeholder = ph;
+  });
+
+  // Update html lang
+  document.documentElement.lang = lang;
+  document.querySelector('.nav-logo-sub').textContent = lang === 'fr'
+    ? "Bureau d'Études Techniques"
+    : "Technical Engineering Firm";
+}
+
+// ═══════════════════ FORM ═══════════════════
+function handleForm(e) {
+  e.preventDefault();
+  const success = document.getElementById('form-success');
+  success.style.display = 'block';
+  success.textContent = currentLang === 'fr'
+    ? '✓ Votre message a bien été envoyé. Nous vous répondrons sous 48 heures ouvrées.'
+    : '✓ Your message has been sent. We will respond within 48 business hours.';
+  e.target.reset();
+  setTimeout(() => { success.style.display = 'none'; }, 6000);
+}
+
+// ═══════════════════ SMOOTH SCROLL ═══════════════════
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      navLinks.classList.remove('open');
+      const offset = 72;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// ═══════════════════ HERO H1 RENDER ═══════════════════
+// Render HTML inside hero h1
+const h1Span = document.querySelector('.hero-h1 span');
+if (h1Span) h1Span.innerHTML = h1Span.getAttribute('data-fr');
+</script>
+</body>
+</html>
